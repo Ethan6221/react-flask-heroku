@@ -1,6 +1,6 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask.helpers import send_from_directory
-
+import os
 # comment out on deployment
 # from flask_cors import CORS
 
@@ -10,22 +10,23 @@ app = Flask(__name__, static_folder="frontend/build", static_url_path="")
 # comment out on deployment
 # CORS(app)
 
-
-# this method returns the opposite of the current state of the button
-# this would look different for your own personal app
-@app.route("/toggle_button/<button_state>", methods=["GET"])
-def toggle_button(button_state: str):
-    if button_state == "Off":
-        output = "On"
+@app.route("/result", methods=["POST", "GET"])
+def result():
+    if request.method == "POST":
+        firstName = request.json
+        first = firstName["firstName"]
+        if first == 'Ethan':
+            lastName = "Pham"
+            return jsonify(lastName)
     else:
-        output = "Off"
-    return jsonify(button=output)
-
+        lastName = "User Not Found"
+        return jsonify(lastName)
+    print(firstName["firstName"])
+    return jsonify("User Not Found")
 
 @app.route("/")
 def index():
     return send_from_directory(app.static_folder, "index.html")
 
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+if __name__ == 'main':
+    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
