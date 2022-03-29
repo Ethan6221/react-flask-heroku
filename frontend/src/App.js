@@ -23,7 +23,7 @@ class App extends React.Component{
       cache: "no-cache",
       headers:{
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Accept': 'text/plain'
       },
       body:JSON.stringify(data)
       }
