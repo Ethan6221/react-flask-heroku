@@ -22,7 +22,8 @@ class App extends React.Component{
       method:"POST",
       cache: "no-cache",
       headers:{
-          "content_type":"application/json",
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
       },
       body:JSON.stringify(data)
       }
