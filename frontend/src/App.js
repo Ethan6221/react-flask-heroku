@@ -29,7 +29,7 @@ class App extends React.Component{
       }
   ).then(response => {
   console.log(data)
-  return response.json()
+  return response.text()
 })
 .then(json => {
 console.log(json)
