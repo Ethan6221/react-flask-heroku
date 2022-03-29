@@ -40,7 +40,7 @@ this.setState({lastName: json})
       <div>
         <form onSubmit={this.handleSubmit}>
         <label>
-          First Name:
+          Enter First Name:
           </label>
           <input type="text" name="firstName" value = {this.state.firstName} onChange = {this.handleChange}/>
           <button type="submit" onClick={this.handleSubmit}>Submit </button>
