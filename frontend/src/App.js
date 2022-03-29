@@ -18,18 +18,18 @@ class App extends React.Component{
     const data = {firstName: this.state.firstName};
     event.preventDefault();
     this.setState({showName : true})
-    fetch("/result", {      // maybe change this line!
+    fetch("/result/", {      // maybe change this line!
       method:"POST",
       cache: "no-cache",
       headers:{
           'Content-Type': 'application/json',
-          'Accept': 'text/plain'
+          'Accept': 'application/json'
       },
       body:JSON.stringify(data)
       }
   ).then(response => {
   console.log(data)
-  return response.text()
+  return response.json()
 })
 .then(json => {
 console.log(json)
